@@ -28,17 +28,8 @@ TABLES = {
     #     'columns': [
     #     ],
     # },
-    # 'File_Name4': {
+    # 'File_Name..n': {
     #     'files': ['{file_path}','{file_path}','{file_path}'
-    #     ],
-    #     'pk_db': '',
-    #     'pk_s3': '',
-    #     'pk_data_type': 'int',
-    #     'columns': [
-    #     ],
-    # },
-    # 'File_Name5': {
-    #     'files': [ '{file_path}','{file_path}','{file_path}'
     #     ],
     #     'pk_db': '',
     #     'pk_s3': '',
