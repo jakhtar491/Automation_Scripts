@@ -34,6 +34,7 @@ TRUNCATE = "TRUNCATE TABLE {schema}.{table};"
 
 DROP = "DROP TABLE {schema}.{table};"
 
+#Copy command to copy data between redshift tables
 COPY = \
 """
 COPY {schema}.{table}
@@ -80,7 +81,7 @@ GET_TABLE_INFO = """SELECT tablename, "column", encoding, "column" || ' ' || UPP
 
 USER = DB_USER
 
-
+#Method to establish connection with DB
 def create_connection():
     return psycopg2.connect(
         database=DATABASE,
