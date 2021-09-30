@@ -72,8 +72,6 @@ class Table(object):
             sql = f'SELECT * FROM {self.schema}.{self.name} WHERE {self.pk_db} IN (SELECT {self.pk_db} FROM {self.schema}.{test_db_table_name}) ORDER BY {self.pk_db};'
             df_db = pd.read_sql_query(sql=sql, con=connection)
             date_columns = self.get_dtypes(cursor)
-            # dtypes_db = {key.lower(): value for key, dtypes,value in dtypes.items()}
-            # df_db = df_db.astype(dtypes_db)
             self.drop_table(connection, cursor, test_db_table_name)
 
         df_db.fillna('', inplace=True)
@@ -97,7 +95,6 @@ class Table(object):
         df_s3.columns = map(str.lower, df_s3.columns)
         df_s3 = df_s3[df_db.columns.tolist()]
         df_s3_header = list(df_s3)
-        # import ipdb;ipdb.set_trace()
 
         if df_db.shape != df_s3.shape:
             errors.append(f'Shape mismatch on file {file}')
