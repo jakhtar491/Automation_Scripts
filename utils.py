@@ -15,16 +15,17 @@ class NoDaemonProcess(Process):
 
     daemon = property(_get_daemon, _set_daemon)
 
-
+#For multiprocesssing, used to run multiple files in parallel run
 class Pool(multiprocessing.pool.Pool):
     Process = NoDaemonProcess
 
-
+#Parse data and fix date & time formats
 def dateparse(string):
     if string is None or string == '' or not isinstance(string, str):
         return ''
     return datetime.strptime(string, '%Y-%m-%d %H:%M:%S.0000000')
 
+#Resovle S3 files location from URL
 def resolve_s3_location(s3_path):
         s3_res = urlparse(s3_path)
         return s3_res.netloc, s3_res.path[1:]
